@@ -15,17 +15,17 @@ public class Achat extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
 		List<String> disques = new ArrayList<String>();
 		disques.add("Disque CD- AMOR TICINES 15 Euros");
 		disques.add("Disque CD- Los Mayas 19 Euros");
 		disques.add("Disque CD- Dick Anglas 25 Euros");
 		disques.add("Disque CD- Frederic Angonas 35 Euros");
 	    
-	    
 	    PrintWriter out=response.getWriter();
         Cookie[] cookies=request.getCookies();
         String IdentificationNom=null;
+        
+        //la méthode précédente on utilisant cookies
         if(cookies!=null) {
        	 for (Cookie cookie : cookies) {
                 if (cookie.getName().equals("nom")) {
@@ -33,11 +33,12 @@ public class Achat extends HttpServlet {
                 }  
             }
        }
-
+        //la on a utilisé le nom client d'apres le filter initiation
+        String nomClient = (String) request.getAttribute("nomClient");
 		out.println("<html> <body style=\" display:flex; justify-content:center;\">");
 		out.println("<div>");
 		out.println("<div style=\"margin-bottom:30px; margin-top:5px\">");
-		out.println("<h1>Bienvenue "+IdentificationNom+" ,dans la servlet Achat"+"</h1>");
+		out.println("<h1>Bienvenue "+nomClient+" ,dans la servlet Achat"+"</h1>");
 		out.println("<h4>(Liste des disques pour achat)</h4>");
 		out.println("<table style=\"border: 1px solid grey;\">");
 		out.println("<tr>");

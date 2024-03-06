@@ -49,4 +49,38 @@
     <servlet-name>enregistre</servlet-name>
     <url-pattern>/enregistre</url-pattern>
   </servlet-mapping>
+  <filter>
+    <display-name>FilterAutorisation</display-name>
+    <filter-name>portier</filter-name>
+    <filter-class>FilterAutorisation</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>portier</filter-name>
+    <servlet-name>Achat</servlet-name>
+  </filter-mapping>
+  <filter-mapping>
+    <filter-name>portier</filter-name>
+    <servlet-name>enregistre</servlet-name>
+  </filter-mapping>
+  <filter-mapping>
+    <filter-name>portier</filter-name>
+    <servlet-name>commande</servlet-name>
+  </filter-mapping>
+  <filter>
+    <display-name>FilterrechercheNom</display-name>
+    <filter-name>initiation</filter-name>
+    <filter-class>FilterrechercheNom</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>initiation</filter-name>
+        <servlet-name>Achat</servlet-name>
+      </filter-mapping>
+    <filter-mapping>
+    <filter-name>initiation</filter-name>
+    <servlet-name>commande</servlet-name>
+  </filter-mapping>
+  <filter-mapping>
+    <filter-name>initiation</filter-name>
+    <servlet-name>enregistre</servlet-name>
+  </filter-mapping>
 </web-app>
